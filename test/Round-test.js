@@ -60,7 +60,7 @@ describe('Round', function() {
         round.returnCurrentCard();
 
         expect(round.returnCurrentCard()).to.equal(deck.cards[0]);
-    })
+    });
 
     it('should have a method that increases turnsCount by 1 each turn', function() {
         let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
@@ -82,11 +82,11 @@ describe('Round', function() {
         
         const round = new Round(deck);
 
-        round.takeTurn('guess')
+        round.takeTurn('guess');
 
-        expect(round.takeTurn()).to.equal(round.currentCard);
+        expect(round.currentCard).to.equal(data.prototypeData[1]);
 
-    })
+    });
 
     it('should store a list of incorrect guess ids', function() {
         let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
@@ -99,7 +99,25 @@ describe('Round', function() {
 
         expect(round.incorrectGuesses.length).to.equal(1);
 
+    });
+
+    it('should give feedback if answer is incorrect', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+
+        let incorrectAnswer = round.takeTurn('guess');
+
+        expect(incorrectAnswer).to.equal('Incorrect!')
     })
+
+    it('should give feedback if answer is correct')
+
+
+
+
 
     //percentageCorrect
     //endRounds 
