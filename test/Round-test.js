@@ -75,7 +75,7 @@ describe('Round', function() {
         expect(round.turnsCount).to.equal(2)
     });
 
-    it('should change the next card in the list to the current card', function() {
+    it('should change the next card in the list to the current card being played', function() {
         let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
         const deck = new Deck(playCards);
@@ -115,17 +115,46 @@ describe('Round', function() {
 
     it('should give feedback if answer is correct', function() {
         let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
-    console.log(playCards);
+
         const deck = new Deck(playCards);
         
         const round = new Round(deck);
 
         let correctAnswer = round.takeTurn('array');
+        console.log(correctAnswer);
 
         expect(correctAnswer).to.equal('Correct!');
     })
 
+    it('should return a percentage of guesses that were correct', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
 
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+
+        round.takeTurn('array');
+        round.takeTurn('potato');
+
+        let percentCorrect = round.calculatePercentCorrect();
+        
+        expect(percentCorrect).to.equal(50);
+
+    })
+
+    it('should tell the user that the round is over and their percentage of correct guesses', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+        
+        round.takeTurn('array');
+        round.takeTurn('potato');
+        let roundOver = round.endRound();
+
+        expect(roundOver).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`)
+    });
 
 
 
