@@ -113,7 +113,17 @@ describe('Round', function() {
         expect(incorrectAnswer).to.equal('Incorrect!')
     })
 
-    it('should give feedback if answer is correct')
+    it('should give feedback if answer is correct', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    console.log(playCards);
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+
+        let correctAnswer = round.takeTurn('array');
+
+        expect(correctAnswer).to.equal('Correct!');
+    })
 
 
 
