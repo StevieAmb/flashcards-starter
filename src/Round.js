@@ -22,19 +22,26 @@ class Round {
         this.currentCard = currentPlayingCard[this.turnsCount];
 
         this.turn = new Turn(guess, this.currentCard)
+        
         let answer = this.turn.evaluateGuess()
-
         if(!answer) {
             this.incorrectGuesses.push(this.currentCard.id);
-            return this.turn.giveFeedback();
+        } else {
+            this.correctGuesses.push(this.currentCard.id);
         }
-
-        if(answer) {
-            return this.turn.giveFeedback();
-        }
-        return this.currentCard;
+        
+        return this.turn.giveFeedback(answer);
     }
-}
+
+    calculatePercentCorrect() {
+       return Math.floor(this.correctGuesses.length / this.turnsCount * 100);
+    }
+
+    endRound() {
+        console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
+        return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+    }
+  }
 
 module.exports = Round;
 
