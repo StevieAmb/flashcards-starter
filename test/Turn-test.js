@@ -75,18 +75,22 @@ describe('Turn', function() {
     it('should throw a message if the guess was correct', function() {
         const card5 = new Card(6, 'do you believe in life after love?', ['monkeys', 'llamas'], 'hollywood');
         const turn = new Turn('hollywood', card5)
+       
+        let answer = turn.evaluateGuess();
+        let correctAnswer = turn.giveFeedback(answer);
 
-        turn.giveFeedback();
-
-        expect(turn.giveFeedback()).to.equal('Correct!');
+        expect(correctAnswer).to.equal('Correct!');
     });
 
     it('should throw a message if guess was incorrect', function() {
         const card5 = new Card(6, 'do you believe in life after love?', ['monkeys', 'llamas'], 'hollywood');
         const turn = new Turn('marmalade', card5)
 
-        turn.giveFeedback();
+        let answer = turn.evaluateGuess();
+        let incorrectAnswer = turn.giveFeedback(answer);
 
-        expect(turn.giveFeedback()).to.equal('Incorrect!');
+        expect(incorrectAnswer).to.equal('Incorrect!');
     });
+
+    it
 });
