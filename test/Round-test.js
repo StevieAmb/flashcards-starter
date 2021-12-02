@@ -50,14 +50,44 @@ describe('Round', function() {
         expect(round.turnsCount).to.equal(0);
     });
 
+    it('should return the current card being played', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+        
+        round.returnCurrentCard();
+
+        expect(round.returnCurrentCard()).to.equal(deck.cards[0]);
+    })
+
     it('should have a method that increases turnsCount by 1 each turn', function() {
-        const round = new Round();
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
 
+        round.takeTurn('guess');
+        round.takeTurn('guess');
 
+        expect(round.turnsCount).to.equal(2)
     });
 
-    it('should create a new instance of Turn')
-    it('should change the next card in the list to the current card')
+    it('should change the next card in the list to the current card', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+
+        round.takeTurn('guess')
+
+        expect(round.takeTurn()).to.equal(round.currentCard);
+
+    })
+
     it('should store a list of correct guesses')
     it('should store a list of incorrect guesses')
 
