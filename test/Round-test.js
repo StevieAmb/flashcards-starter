@@ -88,8 +88,18 @@ describe('Round', function() {
 
     })
 
-    it('should store a list of correct guesses')
-    it('should store a list of incorrect guesses')
+    it('should store a list of incorrect guess ids', function() {
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+    
+        const deck = new Deck(playCards);
+        
+        const round = new Round(deck);
+
+        round.takeTurn('guess');
+
+        expect(round.incorrectGuesses.length).to.equal(1);
+
+    })
 
     //percentageCorrect
     //endRounds 
