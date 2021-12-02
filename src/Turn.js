@@ -21,7 +21,7 @@ class Turn {
     giveFeedback() {
         const userAnswer = this.evaluateGuess();
         if(userAnswer) {
-            return 'Correct!'
+            return 'Correct!';
         } else {
             return 'Incorrect!';
         }
