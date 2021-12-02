@@ -16,12 +16,23 @@ class Round {
     }
 
     takeTurn(guess) {
-        this.turn = new Turn(guess, this.currentCard)
+        
         let playingCard = this.playingDeck;
         this.currentCard = playingCard[this.turnsCount];
         this.turnsCount++;
+
+        this.turn = new Turn(guess, this.currentCard)
+        let answer = this.turn.evaluateGuess()
+
+        if(!answer) {
+            this.incorrectGuesses.push(this.currentCard.id);
+            this.turn.giveFeedback();
+        }
         return this.currentCard
     }
 }
 
 module.exports = Round;
+
+//Guess is evaluated/recorded. Incorrect guesses will be stored (via the id) in an array of incorrectGuesses
+//Feedback is returned regarding whether the guess is incorrect or correct
