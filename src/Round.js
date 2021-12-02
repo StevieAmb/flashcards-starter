@@ -16,19 +16,19 @@ class Round {
     }
 
     takeTurn(guess) {
-        
-        let playingCard = this.playingDeck;
-        this.currentCard = playingCard[this.turnsCount];
+    
+        let currentPlayingCard = this.playingDeck;
         this.turnsCount++;
+        this.currentCard = currentPlayingCard[this.turnsCount];
 
         this.turn = new Turn(guess, this.currentCard)
         let answer = this.turn.evaluateGuess()
 
         if(!answer) {
             this.incorrectGuesses.push(this.currentCard.id);
-            this.turn.giveFeedback();
+            return this.turn.giveFeedback();
         }
-        return this.currentCard
+        return this.currentCard;
     }
 }
 
