@@ -20,18 +20,18 @@ describe('Deck', function() {
     });
 
     it('should store a collection of playable card objects', function() {
-        let playCards = data.prototypeData;
-
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]];
+;
         const deck = new Deck(playCards);
 
         expect(deck.cards).to.equal(playCards);
     });
 
     it('should be able to return number of cards in the deck', function() {
-        let playCards = data.prototypeData;
+        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]];
 
         const deck = new Deck(playCards);
 
-        expect(deck.countCards()).to.equal(30);
+        expect(deck.countCards()).to.equal(3);
     })
 });
