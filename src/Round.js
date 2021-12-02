@@ -28,6 +28,10 @@ class Round {
             this.incorrectGuesses.push(this.currentCard.id);
             return this.turn.giveFeedback();
         }
+
+        if(answer) {
+            return this.turn.giveFeedback();
+        }
         return this.currentCard;
     }
 }
