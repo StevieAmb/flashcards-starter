@@ -9,20 +9,28 @@ const Game = require('../src/Game');
 describe('Game', function() {
 
     it('should be a function', function() {
-        let game = new Game();
 
         expect(Game).to.be.a('function');
     });
 
-    it('should be an instance of Round', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
-    
-        const deck = new Deck(playCards);
-        
-        const round = new Round(deck);
-
-        expect(round).to.be.an.instanceOf(Round);
+    it('should be an instance of Game', function() {
+        let game = new Game();
+        game.start();
+        expect(game).to.be.an.instanceOf(Game);
 
     });
 
+    it('should instantiate a new round as the Current Round', function() {
+        let game = new Game();
+        
+        game.start();
+
+        expect(game.currentRound).to.be.an.instanceOf(Round);
+    })
+
+    it('should instantiate new cards when starting')
+    it('should create new instances of Deck at starting')
+    it('should create new instance of Round at starting')
+
 });
+
