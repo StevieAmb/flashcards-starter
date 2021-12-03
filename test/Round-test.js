@@ -3,8 +3,6 @@ const expect = chai.expect;
 
 const Round = require('../src/Round');
 const Deck = require('../src/Deck');
-const Turn = require('../src/Turn');
-const Card = require('../src/Card');
 const data = require('../src/data');
 
 describe('Round', function() {
@@ -109,7 +107,7 @@ describe('Round', function() {
         const round = new Round(deck);
 
         let incorrectAnswer = round.takeTurn('guess');
-
+        console.log('incorrect', incorrectAnswer);
         expect(incorrectAnswer).to.equal('Incorrect!')
     })
 
