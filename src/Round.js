@@ -1,29 +1,29 @@
 const Turn = require("./Turn");
 
 class Round {
-    constructor(deck) {
-        this.playingDeck = deck.cards;
-        this.turn;
-        this.turnsCount = 0;
-        this.currentCard = deck.cards[0];
-        this.incorrectGuesses = [];
-        this.correctGuesses = [];
-    }
+  constructor(deck) {
+    this.playingDeck = deck.cards;
+    this.turn;
+    this.turnsCount = 0;
+    this.currentCard = deck.cards[0];
+    this.incorrectGuesses = [];
+    this.correctGuesses = [];
+  }
 
-    returnCurrentCard() {
-        return this.currentCard;
-    }
+  returnCurrentCard() {
+    return this.currentCard;
+  }
 
-    takeTurn(guess) {
-        let currentPlayingCard = this.playingDeck;
-        this.turn = new Turn(guess, this.currentCard);
-        let answer = this.turn.evaluateGuess()
+  takeTurn(guess) {
+    let currentPlayingCard = this.playingDeck;
+    this.turn = new Turn(guess, this.currentCard);
+    let answer = this.turn.evaluateGuess()
         
-        if(!answer) {
-            this.incorrectGuesses.push(this.currentCard.id);
-        } else {
-            this.correctGuesses.push(this.currentCard.id);
-        }
+    if(!answer) {
+        this.incorrectGuesses.push(this.currentCard.id);
+    } else {
+        this.correctGuesses.push(this.currentCard.id);
+    }
         this.turnsCount += 1;
     
         this.currentCard = currentPlayingCard[this.turnsCount];
