@@ -57,7 +57,7 @@ describe('Round', function() {
         
         round.returnCurrentCard();
 
-        expect(round.returnCurrentCard()).to.equal(deck.cards[0]);
+        expect(round.returnCurrentCard()).to.equal(playCards[0]);
     });
 
     it('should have a method that increases turnsCount by 1 each turn', function() {
@@ -82,7 +82,7 @@ describe('Round', function() {
 
         round.takeTurn('guess');
 
-        expect(round.currentCard).to.equal(data.prototypeData[1]);
+        expect(round.currentCard).to.equal(deck.cards[1]);
 
     });
 
@@ -107,8 +107,8 @@ describe('Round', function() {
         const round = new Round(deck);
 
         let incorrectAnswer = round.takeTurn('guess');
-        console.log('incorrect', incorrectAnswer);
-        expect(incorrectAnswer).to.equal('Incorrect!')
+        console.log(round.currentCard)
+;        expect(incorrectAnswer).to.equal('Incorrect!')
     })
 
     it('should give feedback if answer is correct', function() {
@@ -118,7 +118,7 @@ describe('Round', function() {
         
         const round = new Round(deck);
 
-        let correctAnswer = round.takeTurn('array');
+        let correctAnswer = round.takeTurn('object');
         console.log(correctAnswer);
 
         expect(correctAnswer).to.equal('Correct!');
@@ -131,7 +131,7 @@ describe('Round', function() {
         
         const round = new Round(deck);
 
-        round.takeTurn('array');
+        round.takeTurn('object');
         round.takeTurn('potato');
 
         let percentCorrect = round.calculatePercentCorrect();
