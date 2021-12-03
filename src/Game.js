@@ -13,9 +13,9 @@ class Game {
   }
 
   start() {
-    const playingCards = prototypeQuestions.map(question => {
-    let cards = new Card(question.id, question.question, question.answers, question.correctAnswer)
-    return cards;
+    const playingCards = prototypeQuestions.map(card => {
+      let cards = new Card(card.id, card.question, card.answers, card.correctAnswer)
+      return cards;
     });
     let deck = new Deck(playingCards);
     this.currentRound = new Round(deck);
@@ -30,7 +30,7 @@ class Game {
   }
 
   printQuestion(round) {
-      util.main(round);
+    util.main(round);
   }
 }
 
