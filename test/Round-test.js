@@ -7,84 +7,84 @@ const data = require('../src/data');
 
 describe('Round', function() {
 
-    it('should be a function', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should be a function', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
 
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        expect(Round).to.be.a('function');
-    });
+    expect(Round).to.be.a('function');
+  });
 
-    it('should be an instance of Round', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should be an instance of Round', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
         
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        expect(round).to.be.an.instanceOf(Round);
+    expect(round).to.be.an.instanceOf(Round);
 
-    }); 
+  }); 
 
-    it('should store a a deck of cards', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should store a a deck of cards', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
     
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        expect(round.playingDeck).to.deep.equal(deck.cards);
-    })
+    expect(round.playingDeck).to.deep.equal(deck.cards);
+  })
 
-    it('turns should start at a default of 0', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('turns should start at a default of 0', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
         
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        expect(round.turnsCount).to.equal(0);
-    });
+    expect(round.turnsCount).to.equal(0);
+  });
 
-    it('should return the current card being played', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should return the current card being played', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
         
-        const round = new Round(deck);
+    const round = new Round(deck);
         
-        round.returnCurrentCard();
+    round.returnCurrentCard();
 
-        expect(round.returnCurrentCard()).to.equal(playCards[0]);
-    });
+    expect(round.returnCurrentCard()).to.equal(playCards[0]);
+  });
 
-    it('should have a method that increases turnsCount by 1 each turn', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should have a method that increases turnsCount by 1 each turn', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
         
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        round.takeTurn('guess');
-        round.takeTurn('guess');
+    round.takeTurn('guess');
+    round.takeTurn('guess');
 
-        expect(round.turnsCount).to.equal(2)
-    });
+    expect(round.turnsCount).to.equal(2)
+  });
 
-    it('should change the next card in the list to the current card being played', function() {
-        let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
+  it('should change the next card in the list to the current card being played', function() {
+    let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
     
-        const deck = new Deck(playCards);
+    const deck = new Deck(playCards);
         
-        const round = new Round(deck);
+    const round = new Round(deck);
 
-        round.takeTurn('guess');
+    round.takeTurn('guess');
 
-        expect(round.currentCard).to.equal(deck.cards[1]);
+    expect(round.currentCard).to.equal(deck.cards[1]);
 
-    });
+  });
 
     it('should store a list of incorrect guess ids', function() {
         let playCards = [data.prototypeData[0], data.prototypeData[1], data.prototypeData[2]]
