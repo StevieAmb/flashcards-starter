@@ -153,15 +153,4 @@ describe('Round', function() {
 
         expect(roundOver).to.equal(`** Round over! ** You answered ${round.calculatePercentCorrect()}% of the questions correctly!`)
     });
-
-
-
-    //percentageCorrect
-    //endRounds 
-
-//in the test file, you make a mini round and mini deck of cards
-//and then call take turns with guesses and scenaris you make up
-//so that you can do a fake scenario to should what will happen
-//when you have real and fake information.
-//each test explores a different possibility. 
 });
